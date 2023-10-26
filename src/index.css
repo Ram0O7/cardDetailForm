@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+form label {
+  @apply tracking-widest text-sm font-semibold text-Very_dark_violet;
+}
+form input {
+  @apply p-2 border border-Light_grayish_violet rounded-md;
+}
+.input_error {
+  @apply border-input_errors;
+}
+form input::placeholder {
+  @apply text-Light_grayish_violet;
+}
+
+@media (max-width: 1024px) {
+  form label {
+    @apply text-xs;
+  }
+  form input {
+    @apply px-2 py-1;
+  }
+}
