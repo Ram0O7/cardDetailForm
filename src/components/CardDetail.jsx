@@ -4,10 +4,10 @@ import { useForm } from "react-hook-form";
 export default function CardDetail({ updateCardDetail }) {
   const [cardData, setCardData] = useState({
     name: "Jane Appleseed",
-    month: "10",
-    year: "2025",
-    cvv: "169",
-    card_number: "2345 9087 1234 9087",
+    month: "0",
+    year: "2000",
+    cvv: "000",
+    card_number: "0000 0000 0000 0000",
   });
   const {
     register,
@@ -36,11 +36,11 @@ export default function CardDetail({ updateCardDetail }) {
     });
     // reset the form
     reset();
-    };
-    
-    useEffect(() => {
-        updateCardDetail(cardData);
-    },[cardData])
+  };
+
+  useEffect(() => {
+    updateCardDetail(cardData);
+  }, [cardData]);
 
   return (
     <div className="flex-1 flex justify-center items-center lg:justify-start">
