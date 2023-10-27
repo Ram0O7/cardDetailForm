@@ -13,9 +13,11 @@ const App = () => {
   });
   const [detailSubmitted, setDetailSubmitted] = useState(false);
 
-  const updateCardDetail = (data) => {
-    setUpdatedCardData(data);
-    setDetailSubmitted((prev) => !prev);
+  const handleCardUpdate = (data) => {
+    if (!detailSubmitted) {
+      setUpdatedCardData(data);
+      setDetailSubmitted(true);
+    }
   };
 
   return (
@@ -23,11 +25,11 @@ const App = () => {
       <CardDisplay data={updatedCardData} />
       {detailSubmitted ? (
         <ThankYou
-          onContinue={() => setDetailSubmitted((prev) => !prev)}
+          onContinue={() => setDetailSubmitted(false)}
           name={updatedCardData.name}
         />
       ) : (
-        <CardDetail updateCardDetail={updateCardDetail} />
+        <CardDetail updateCardDetail={handleCardUpdate} />
       )}
     </main>
   );

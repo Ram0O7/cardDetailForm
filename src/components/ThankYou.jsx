@@ -39,11 +39,11 @@ const ThankYou = ({ onContinue, name }) => {
   return (
     <div className="flex-1 flex lg:justify-start justify-center items-center">
       <div className="flex flex-col gap-4 lg:gap-6 justify-center items-center mt-4">
-        <img src="/images/icon-complete.svg" alt="complete" />
+        <img src="./icon-complete.svg" alt="complete" />
         <h1 className="text-5xl lg:text-6xl">THANK YOU!</h1>
         <p>We've added your card details!</p>
         <button
-          onClick={onContinue}
+          onClick={() => onContinue()}
           className="w-full bg-Very_dark_violet text-Light_grayish_violet py-2 rounded-md"
         >
           Continue

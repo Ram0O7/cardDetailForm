@@ -35,12 +35,9 @@ export default function CardDetail({ updateCardDetail }) {
       card_number: numberInputRef.current.value,
     });
     // reset the form
+    updateCardDetail(cardData);
     reset();
   };
-
-  useEffect(() => {
-    updateCardDetail(cardData);
-  }, [cardData]);
 
   return (
     <div className="flex-1 flex justify-center items-center lg:justify-start">
