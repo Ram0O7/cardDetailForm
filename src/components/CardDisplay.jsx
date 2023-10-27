@@ -2,6 +2,7 @@ import React from "react";
 
 export default function CardDisplay({ data }) {
   const { name, month, year, cvv, card_number } = data;
+
   return (
     <div className="flex-1 relative">
       <picture className="absolute top-0 left-0 -z-10 overflow-hidden h-full scale-x-150 lg:scale-100 lg:w-3/4">

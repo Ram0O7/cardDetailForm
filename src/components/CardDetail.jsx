@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function CardDetail({ updateCardDetail }) {
-  const [cardData, setCardData] = useState({
-    name: "Jane Appleseed",
-    month: "0",
-    year: "2000",
-    cvv: "000",
-    card_number: "0000 0000 0000 0000",
-  });
+  // const [cardData, setCardData] = useState({
+  //   name: "Jane Appleseed",
+  //   month: "0",
+  //   year: "2000",
+  //   cvv: "000",
+  //   card_number: "0000 0000 0000 0000",
+  // });
   const {
     register,
     handleSubmit,
@@ -30,12 +30,15 @@ export default function CardDetail({ updateCardDetail }) {
   }
 
   const onSubmit = (data) => {
-    setCardData({
+    // setCardData({
+    //   ...data,
+    //   card_number: numberInputRef.current.value,
+    // });
+    // reset the form
+    updateCardDetail({
       ...data,
       card_number: numberInputRef.current.value,
     });
-    // reset the form
-    updateCardDetail(cardData);
     reset();
   };
 

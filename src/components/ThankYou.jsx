@@ -29,9 +29,7 @@ const ThankYou = ({ onContinue, name }) => {
         doc.addImage(imgData2, "PNG", 20, 170, imgWidth, imgHeight2);
 
         // Save or download the PDF
-        doc.save(
-          `${name.toLowerCase()}_card${Math.floor(Math.random() * 9999)}.pdf`
-        );
+        doc.save(`${name.toLowerCase()}_card.pdf`);
       });
     });
   };
