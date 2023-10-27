@@ -17,7 +17,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (!detailSubmitted) {
+    if (!detailSubmitted && cardData.cvv !== "000") {
       setDetailSubmitted(true);
     }
   }, [cardData]);
