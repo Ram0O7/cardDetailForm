@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-export default function CardDisplay({ data }) {
-  const { name, month, year, cvv, card_number } = data;
+export default function CardDisplay({ name, cardNumber, month, year, cvv }) {
+  const [currentName, setCurrentName] = useState("Your Name");
+  const [currentCardNumber, setCurrentCardNumber] = useState(
+    "0000 0000 0000 0000"
+  );
+  const [currentMonth, setCurrentMonth] = useState("0");
+  const [currentYear, setCurrentYear] = useState("00");
+  const [currentCvv, setCurrentCvv] = useState("000");
+
+  useEffect(() => {
+    name ? setCurrentName(name) : setCurrentName("Your Name");
+    cardNumber
+      ? setCurrentCardNumber(cardNumber)
+      : setCurrentCardNumber("0000 0000 0000 0000");
+    month ? setCurrentMonth(month) : setCurrentMonth("0");
+    year ? setCurrentYear(year) : setCurrentYear("00");
+    cvv ? setCurrentCvv(cvv) : setCurrentCvv("000");
+  }, [name, cardNumber, month, year, cvv]);
 
   return (
     <div className="flex-1 relative">
@@ -15,7 +31,9 @@ export default function CardDisplay({ data }) {
       >
         <img src="./bg-card-back.png" alt="card back" />
         <div className="absolute flex justify-end items-center top-0 left-0 w-full h-full p-10 lg:p-12">
-          <p className="font-bold tracking-widest text-White mb-2">{cvv}</p>
+          <p className="font-bold tracking-widest text-White mb-2">
+            {currentCvv}
+          </p>
         </div>
       </div>
       <div
@@ -32,14 +50,14 @@ export default function CardDisplay({ data }) {
             />
           </div>
           <div className="flex flex-col gap-4 text-White">
-            <p className="font-bold text-2xl lg:text-3xl tracking-widest">
-              {card_number}
+            <p className="font-bold text-2xl lg:text-3xl tracking-widest uppercase">
+              {currentCardNumber}
             </p>
             <div className="flex justify-between">
-              <p className="uppercase">{name}</p>
-              <p>{`${month < 10 ? "0" + month : month}/${year.substring(
-                year.length - 2
-              )}`}</p>
+              <p className="capitalize">{currentName}</p>
+              <p>{`${
+                currentMonth < 10 ? "0" + currentMonth : currentMonth
+              }/${currentYear}`}</p>
             </div>
           </div>
         </div>

@@ -3,37 +3,68 @@ import CardDisplay from "./components/cardDisplay";
 import CardDetail from "./components/CardDetail";
 import ThankYou from "./components/ThankYou";
 const App = () => {
-  const [cardData, setCardData] = useState({
-    name: "Jane Appleseed",
-    month: "0",
-    year: "2000",
-    cvv: "000",
-    card_number: "0000 0000 0000 0000",
-  });
+  // state variable for card form data
+  const [name, setName] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
+  const [cvv, setCvv] = useState("");
+
+  // confirm form submission
   const [detailSubmitted, setDetailSubmitted] = useState(false);
 
-  const handleCardUpdate = (data) => {
-    setCardData(data);
+  //handle input changes
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+    // Perform validation and update nameError
   };
 
-  useEffect(() => {
-    if (!detailSubmitted && cardData.cvv !== "000") {
-      setDetailSubmitted(true);
-    }
-  }, [cardData]);
+  const handleCardNumberChange = (e) => {
+    setCardNumber(e.target.value);
+    // Perform validation and update cardNumberError
+  };
+
+  const handleMonthChange = (e) => {
+    setMonth(e.target.value);
+    // Perform validation and update cardNumberError
+  };
+
+  const handleYearChange = (e) => {
+    setYear(e.target.value);
+    // Perform validation and update cardNumberError
+  };
+
+  const handleCvvChange = (e) => {
+    setCvv(e.target.value);
+    // Perform validation and update cardNumberError
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setDetailSubmitted(true);
+  };
 
   return (
     <main className="min-h-screen w-full flex flex-col lg:flex-row overflow-hidden">
-      <CardDisplay data={cardData} />
+      <CardDisplay
+        name={name}
+        cardNumber={cardNumber}
+        month={month}
+        year={year}
+        cvv={cvv}
+      />
       {detailSubmitted ? (
-        <ThankYou
-          onContinue={() => setDetailSubmitted(false)}
-          name={cardData.name}
-        />
+        <ThankYou onContinue={() => setDetailSubmitted(false)} name={name} />
       ) : (
         <CardDetail
-          updateCardDetail={handleCardUpdate}
-          detailSubmitted={detailSubmitted}
+          // input change handlers
+          handleNameChange={handleNameChange}
+          handleCardNumberChange={handleCardNumberChange}
+          handleMonthChange={handleMonthChange}
+          handleYearChange={handleYearChange}
+          handleCvvChange={handleCvvChange}
+          // handle form submission
+          handleSubmit={handleSubmit}
         />
       )}
     </main>
